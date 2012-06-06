@@ -85,13 +85,17 @@ class Integer
   BASE62_PRIMITIVES_SIZE = BASE62_PRIMITIVES.size
 
   def base62_encode
-     return "0" if self == 0
-     number = self
-     result = ''
-     while(number != 0)
-        result = BASE62_PRIMITIVES[number % BASE62_PRIMITIVES_SIZE ] + result
-        number /= BASE62_PRIMITIVES_SIZE
-     end
+    return "0" if self == 0
+    number = self
+    result = ''
+
+    while(number != 0)
+      b64c    = BASE62_PRIMITIVES[number % BASE62_PRIMITIVES_SIZE ]
+      number /= BASE62_PRIMITIVES_SIZE
+
+      result.insert(0, b64c)
+    end
+
     result
   end
 end
