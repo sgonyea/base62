@@ -68,13 +68,18 @@ class String
   BASE62_PRIMITIVES_SIZE = BASE62_PRIMITIVES.size
 
   def base62_decode
-    i = 0
+    idx   = 0
     i_out = 0
-    self.split(//).reverse.each do |c|
-      place = BASE62_PRIMITIVES_SIZE ** i
-      i_out += BASE62_PRIMITIVES[c] * place
-      i += 1
+    len = self.length
+
+    while idx < len
+      place   = BASE62_PRIMITIVES_SIZE ** idx
+      idx    += 1
+
+      char    = self[-idx]
+      i_out  += BASE62_PRIMITIVES[char] * place
     end
+
     i_out
   end
 end
