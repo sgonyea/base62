@@ -1,2 +1,2 @@
 require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/base62'
+require File.expand_path(File.join(__FILE__, '../../lib/base62'))
